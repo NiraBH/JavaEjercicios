@@ -1,27 +1,26 @@
 
+
+/**
+ * @author Administrador
+ * @version 1.0
+ * @created 12-dic-2016 17:53:38
+ */
 public class Persona {
 
-	private String nombre;
-	private int edad;
+	float altura;
+	float imc;
+	String nombre;
+	float peso;
+
+	/*
+	 * Metodo constructor 
+	 * Me permite crear objetos de la clase Persona
+	 */
+
+	public Persona() {
+
+	}
+
 	
-	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public int getEdad() {
-		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-	
-	public void mostrarPersona ()
-	{
-		System.out.println("Nombre = " +this.nombre);
-		System.out.println("Edad = " +this.edad);
-	}
-	
+
 }
