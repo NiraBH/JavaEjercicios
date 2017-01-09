@@ -9,7 +9,7 @@ public class SiPalindromo {
 		// TODO Auto-generated method stub
 		String cad = null;
 		
-		cad = "dabalearrozalazorraelabad";
+		cad = "orro";
 		esPalindromo(cad);
 		
 		
@@ -37,7 +37,7 @@ public class SiPalindromo {
 		
 			if (!bes_palim)
 			{
-				System.out.println("TODO ESTO ES PALINDROMO");
+				System.out.println( cad + " = Es palindromo ");
 				}
 			else 
 			{
