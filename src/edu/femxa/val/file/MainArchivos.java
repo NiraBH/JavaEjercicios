@@ -6,17 +6,31 @@ public class MainArchivos {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		File archivo = new File("/Users/nirabethencourt/Documents/workspace/edu.femxa.val.ejernavi/src/Carpeta");
+		File archivo = null;
+		archivo = new File("Foldercito");
+		boolean existe = archivo.exists();
 		
-		String [] lista = null;
 		
-		lista = archivo.list();
-		
-		for (int i=0; i < lista.length; i++)
-		{
-			System.out.println(lista[i]);
+		if (existe)
+			{
+			System.out.println("Existe el directorio");
+			String [] lista = null;
+			lista = archivo.list();
+			
+			for (int i=0; i < lista.length; i++)
+			{
+				boolean esta_oculto = archivo.isHidden();
+				
+				if (esta_oculto)
+				System.out.println(lista [i]);
+			}
 		}
+		else
+		{
+			System.out.println("No existe el directorio");
+		}
+		
+		
 		
 		
 		
