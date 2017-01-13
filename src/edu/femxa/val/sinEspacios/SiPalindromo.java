@@ -1,6 +1,6 @@
 package edu.femxa.val.sinEspacios;
 
-public class SiPalindromo2 {
+public class SiPalindromo {
 	
 		
 		private static boolean siEsPalindromo (String cad)
