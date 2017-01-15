@@ -12,11 +12,11 @@ public class NotaMedia {
 		
 		for (int i=0; i < media.length; i++){
 			media_notas = media_notas + media[i];
+			
 		}
 		
 		media_notas = media_notas / media.length;
-		
-		System.out.println("La nota media es: "+media_notas);
+		System.out.println("Según las notas dadas, la nota media es: "+media_notas);
 		
 		
 	}
