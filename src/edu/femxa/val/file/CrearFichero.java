@@ -41,7 +41,7 @@ public class CrearFichero {
 		}
 		else
 		{
-	        System.out.println("El archivo ya existe");
+	        System.out.println("El archivo ya existe \n");
 		
 		
 	}
