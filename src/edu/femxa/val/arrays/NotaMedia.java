@@ -1,5 +1,6 @@
 package edu.femxa.val.arrays;
 
+
 public class NotaMedia {
 	
 	private static int[] array_notas = {0, 10, 2, 6, 7, 5, 4};

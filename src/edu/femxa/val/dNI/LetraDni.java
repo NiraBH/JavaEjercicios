@@ -16,7 +16,7 @@ public class LetraDni {
 		
 		System.out.println("La letra de su DNI es: " +letra);
 		
-		;
+		
 	}
 	
 	public static int pedirDni()
