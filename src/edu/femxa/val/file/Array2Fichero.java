@@ -12,7 +12,8 @@ public class Array2Fichero {
 	
 	public static void main(String[] args) {
 		File file = new File("filecito");
-		String[] para_escribir;
+		String[] para_escribir = null;
+		
 		try {
 			para_escribir = fromFichero2Array(file);
 			fromArray2Fichero(para_escribir);
@@ -22,7 +23,20 @@ public class Array2Fichero {
 			e.printStackTrace();
 		}
 		
+		for (String cad: para_escribir) //For each VER EN CASA
+		{
+			System.out.println(cad);
+		}
 		
+		if (fromArray2Fichero(para_escribir))
+		{
+			System.out.println("Escrito");
+		}
+		else
+		{
+			System.out.println("No escrito");
+		}
+			
 	}
 
 	
@@ -74,41 +88,54 @@ public class Array2Fichero {
 		}
 	
 
-	public static boolean fromArray2Fichero (String [] lista_cadena) throws IOException
+	public static boolean fromArray2Fichero (String [] lista_cadena)
 	{
 		boolean ok = true;
-		File fichero = new File("filecito2");
-		FileWriter fichero_escribir = new FileWriter (fichero);
-		BufferedWriter buff_para_escribir = new BufferedWriter (fichero_escribir);
+		FileWriter fichero_escribir = null;
+		BufferedWriter buff_para_escribir = null;
 
-		
+		try {
+
+			fichero_escribir = new FileWriter ("filecito4");
+			buff_para_escribir = new BufferedWriter (fichero_escribir);
+			
+			
 			for (int i = 0; i < lista_cadena.length; i++) 
 				{
-					try {
-						
+					
 						buff_para_escribir.write(lista_cadena[i]);
 						buff_para_escribir.newLine();
 						
-						
+//						int longi = lista_cadena.length -1;
+//					if (i != longi)
+//						{
+//						buff_para_escribir.newLine();
+//						}
+//						i++;
+				}	
+			
 					} catch (IOException e) {
 						ok = false;
 						e.printStackTrace();
 					}
-					
-					
+		finally 
+		{			
+			try {
+				buff_para_escribir.close();
+				fichero_escribir.close();
+				
+			} catch (IOException e) {
+				System.out.println("Error creando ficheros");
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return ok;
 				}
 			
-			buff_para_escribir.close();
-			fichero_escribir.close();
-			return ok;
-		
-	
-			
-		
-		
-		
 		
 	}
 	
 	
-}
+
