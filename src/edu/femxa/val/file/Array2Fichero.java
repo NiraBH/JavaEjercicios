@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Array2Fichero {
 	
 	public static void main(String[] args) {
-		File file = new File("/Users/nirabethencourt/git/JavaEjercicios/Foldercito/filecito");
+		File file = new File("filecito");
 		String[] para_escribir;
 		try {
 			para_escribir = fromFichero2Array(file);
@@ -32,34 +32,52 @@ public class Array2Fichero {
 		String[] lista_cadena = new String[5];
 		int indice = 0;
 		String linea = null ;
+		FileReader leerFichero = new FileReader(file);
+		BufferedReader leer_file = new BufferedReader(leerFichero);
+		linea = leer_file.readLine();
 		
-		try {
-			FileReader leerFichero = new FileReader(file);
-			BufferedReader leer_file = new BufferedReader(leerFichero);
-			
-			while ((linea = leer_file.readLine()) != null)
+		try 
+		
+			{
+			while ( linea != null)
 			{
 				lista_cadena[indice]= linea;
 				indice++;
-				System.out.println(linea);
+				linea = leer_file.readLine();
+			}
+			
+			System.out.println("El Archivo ha sido leído");
+			
 			}
 		
-			}
-			catch (Exception e)
+		catch (Exception e)
 		{
 			System.out.println("Se ha generado un error!!");
 			e.printStackTrace();
 			}	
 		
+		finally
+		{
+			try {
+				leer_file.close();
+				leerFichero.close();
+				
+				
+			} catch (Exception e) {
+				System.out.println("Ha ocurrido un error en los cierres");
+				e.printStackTrace();
+			}
+			
+		}
 		
 		return lista_cadena; 
 		}
 	
-	
+
 	public static boolean fromArray2Fichero (String [] lista_cadena) throws IOException
 	{
 		boolean ok = true;
-		File fichero = new File("/Users/nirabethencourt/git/JavaEjercicios/Foldercito/filecito2");
+		File fichero = new File("filecito2");
 		FileWriter fichero_escribir = new FileWriter (fichero);
 		BufferedWriter buff_para_escribir = new BufferedWriter (fichero_escribir);
 
