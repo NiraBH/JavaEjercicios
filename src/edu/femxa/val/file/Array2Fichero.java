@@ -90,7 +90,7 @@ public class Array2Fichero {
 
 	public static boolean fromArray2Fichero (String [] lista_cadena)
 	{
-		boolean ok = true;
+		boolean ok = true;	
 		FileWriter fichero_escribir = null;
 		BufferedWriter buff_para_escribir = null;
 
