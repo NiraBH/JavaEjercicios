@@ -9,12 +9,10 @@ public class RegistroUsuario {
 
 	public static void main(String[] args) {
 		String usuario = pedirUsuario();
-		boolean guardada = guardarUsuario(usuario);
+		boolean usuario_guardada = guardarUsuario(usuario);
 		String contraseña = pedirContraseña();
-		String contraseña_confirmada = pedirConfirmarContraseña(contraseña);
-		confirmarContraseña(contraseña, contraseña_confirmada);
-		String contraseña_codificada = codifica(contraseña_confirmada);
-		
+		String contraseña_codificada = codifica(contraseña);
+		boolean contraseña_guardada = guardarContraseña(contraseña_codificada);
 		System.out.println(contraseña_codificada);
 
 
@@ -28,6 +26,7 @@ public class RegistroUsuario {
 
 		usuario = scanner.nextLine();
 
+		
 		return usuario;
 
 	}
@@ -38,48 +37,31 @@ public class RegistroUsuario {
 		String contraseña = null;
 		Scanner scanner = new Scanner (System.in); 
 		contraseña = scanner.nextLine();
+		
+		System.out.println("Introduce tu contraseña para confirmar: ");
+		String contraseña_confirmar = null;
+		Scanner scanner2 = new Scanner (System.in); 
+		contraseña_confirmar = scanner.nextLine();
+		
+		if (contraseña.equals(contraseña_confirmar))
+		
+		{
+			System.out.println("Las contraseñas coinciden");
+			
+		}
+		else 
+		{
+			System.out.println("Las contraseñas no coinciden");
+			pedirContraseña();
+		}
 
 		return contraseña;
 	}
 
-	public static String pedirConfirmarContraseña (String contraseña)
-	{
-		System.out.println("Introduce tu contraseña para confirmar: ");
-		String conf_contraseña = null;
-		Scanner scanner = new Scanner (System.in); 
-		conf_contraseña = scanner.nextLine();
 
-		return conf_contraseña;
-	}
 
 	public static final int CLAVE = 5;
 	public static final char LETRA = '{';
-
-	public static void confirmarContraseña (String contraseña, String contraseña_confirmar)
-	{
-
-			while (contraseña != contraseña_confirmar)
-				{
-				confirmarContraseña(contraseña, contraseña_confirmar);
-				}
-			
-//			if (contraseña == contraseña_confirmar)
-//				{
-//				System.out.println("Las contraseñas coinciden.");	
-//				}
-//			else {
-//				System.out.println("Las contraseñas no coinciden");
-//				String sin_confirmar = pedirContraseña();
-//				
-//			
-//				if (sin_confirmar == contraseña)
-//				{
-//				System.out.println("Las contraseñas coinciden.");
-//				}
-//			}
-			
-		}
-			
 	
 	
 	public static String codifica (String cadena)
@@ -119,13 +101,10 @@ public class RegistroUsuario {
 	public static boolean guardarUsuario (String nombre_usuario)
 	{
 		boolean ok = true;	
-		//FileWriter archivo = null;
 		BufferedWriter buff_escribir = null;
 
 		try {
 
-			//archivo = new FileWriter ("filecito4");
-			//buff_escribir = new BufferedWriter (archivo);
 			buff_escribir = new BufferedWriter (new FileWriter ("Usuarios.txt"));
 			buff_escribir.write(nombre_usuario);
 			buff_escribir.newLine();
@@ -139,7 +118,6 @@ public class RegistroUsuario {
 		{			
 			try {
 				buff_escribir.close();
-				//archivo.close();
 
 			} catch (IOException e) {
 				System.out.println("Error creando ficheros");
@@ -150,4 +128,35 @@ public class RegistroUsuario {
 		
 		return ok;
 				}
+	public static boolean guardarContraseña (String contraseña)
+	{
+		boolean ok = true;	
+		BufferedWriter buff_escribir_contraseña = null;
+
+		try {
+
+			buff_escribir_contraseña = new BufferedWriter (new FileWriter ("Contraseñas.txt"));
+			buff_escribir_contraseña.write(contraseña);
+			buff_escribir_contraseña.newLine();
+
+
+		} catch (IOException e) {
+			ok = false;
+			e.printStackTrace();
+		}
+		finally 
+		{			
+			try {
+				buff_escribir_contraseña.close();
+
+			} catch (IOException e) {
+				System.out.println("Error creando ficheros");
+				e.printStackTrace();
+			}
+
+		}
+		
+		return ok;
+				}
+
 }
