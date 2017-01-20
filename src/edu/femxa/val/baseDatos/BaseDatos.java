@@ -23,7 +23,7 @@ public class BaseDatos {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());// método equivalente al anterior
 			//Sea como sea, es, <<oye, si te piden una conexión, se la pides a esa clase!>>
-			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
+			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "System", "password");
   	        stmt = conn.createStatement();
 			rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
 			while (rset.next())
