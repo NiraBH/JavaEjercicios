@@ -9,11 +9,11 @@ public class RegistroUsuario {
 
 	public static void main(String[] args) {
 		String usuario = pedirUsuario();
-		boolean usuario_guardada = guardarUsuario(usuario);
-		String contraseña = pedirContraseña();
-		String contraseña_codificada = codifica(contraseña);
-		boolean contraseña_guardada = guardarContraseña(contraseña_codificada);
-		System.out.println(contraseña_codificada);
+		guardarUsuario(usuario);
+		String contrasenia = pedirContrasenia();
+		String contrasenia_codificada = codifica(contrasenia);
+		guardarContrasenia(contrasenia_codificada);
+		System.out.println(contrasenia_codificada);
 
 
 	}
@@ -31,19 +31,19 @@ public class RegistroUsuario {
 
 	}
 
-	public static String pedirContraseña()
+	public static String pedirContrasenia()
 	{
-		System.out.println("Introduce tu contraseña: ");
-		String contraseña = null;
+		System.out.println("Introduce tu contrasenia: ");
+		String contrasenia = null;
 		Scanner scanner = new Scanner (System.in); 
-		contraseña = scanner.nextLine();
+		contrasenia = scanner.nextLine();
 		
-		System.out.println("Introduce tu contraseña para confirmar: ");
-		String contraseña_confirmar = null;
+		System.out.println("Introduce tu contrasenia para confirmar: ");
+		String contrasenia_confirmar = null;
 		Scanner scanner2 = new Scanner (System.in); 
-		contraseña_confirmar = scanner.nextLine();
+		contrasenia_confirmar = scanner.nextLine();
 		
-		if (contraseña.equals(contraseña_confirmar))
+		if (contrasenia.equals(contrasenia_confirmar))
 		
 		{
 			System.out.println("Las contraseñas coinciden");
@@ -52,10 +52,10 @@ public class RegistroUsuario {
 		else 
 		{
 			System.out.println("Las contraseñas no coinciden");
-			pedirContraseña();
+			pedirContrasenia();
 		}
 
-		return contraseña;
+		return contrasenia;
 	}
 
 
@@ -128,16 +128,16 @@ public class RegistroUsuario {
 		
 		return ok;
 				}
-	public static boolean guardarContraseña (String contraseña)
+	public static boolean guardarContrasenia (String contrasenia)
 	{
 		boolean ok = true;	
-		BufferedWriter buff_escribir_contraseña = null;
+		BufferedWriter buff_escribir_contrasenia = null;
 
 		try {
 
-			buff_escribir_contraseña = new BufferedWriter (new FileWriter ("Contraseñas.txt"));
-			buff_escribir_contraseña.write(contraseña);
-			buff_escribir_contraseña.newLine();
+			buff_escribir_contrasenia = new BufferedWriter (new FileWriter ("Contraseñas.txt"));
+			buff_escribir_contrasenia.write(contrasenia);
+			buff_escribir_contrasenia.newLine();
 
 
 		} catch (IOException e) {
@@ -147,7 +147,7 @@ public class RegistroUsuario {
 		finally 
 		{			
 			try {
-				buff_escribir_contraseña.close();
+				buff_escribir_contrasenia.close();
 
 			} catch (IOException e) {
 				System.out.println("Error creando ficheros");

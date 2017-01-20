@@ -14,10 +14,10 @@ public class IniciarSesion {
 		// TODO Auto-generated method stub
 		try {
 			String usuario = accesoUsuario();
-			String contraseña = accesoContraseña();
-			String contraseña_codificada = codifica(contraseña);
-			System.out.println(usuario + contraseña_codificada);
-			comprobarAcceso(usuario, contraseña_codificada);
+			String contrasenia = accesoContrasenia();
+			String contrasenia_codificada = codifica(contrasenia);
+			System.out.println(usuario + contrasenia_codificada);
+			comprobarAcceso(usuario, contrasenia_codificada);
 
 			
 			
@@ -43,18 +43,18 @@ public class IniciarSesion {
 
 	}
 
-	public static String accesoContraseña()
+	public static String accesoContrasenia()
 	{
 		
 		
 		System.out.println("Introduce tu contraseña: ");
-		String contraseña = null;
+		String contrasenia = null;
 		Scanner scanner = new Scanner (System.in); 
-		contraseña = scanner.nextLine();
+		contrasenia = scanner.nextLine();
 		
 		
 
-		return contraseña;
+		return contrasenia;
 
 
 	}
@@ -95,12 +95,12 @@ public class IniciarSesion {
 		return palabra_cifrada;
 	}
 	
-	public static boolean comprobarAcceso (String usuario, String contraseña) throws FileNotFoundException{
+	public static boolean comprobarAcceso (String usuario, String contrasenia) throws FileNotFoundException{
 
 		boolean inicio_correcto = false;
 
 		BufferedReader leer_usuarios = new BufferedReader(new FileReader("Usuarios.txt"));
-		BufferedReader leer_contraseña = new BufferedReader(new FileReader("Contraseñas.txt"));
+		BufferedReader leer_contrasenia = new BufferedReader(new FileReader("Contraseñas.txt"));
 
 		try 
 
@@ -109,17 +109,17 @@ public class IniciarSesion {
 			String linea_contra = null ;
 
 			linea_usuario = leer_usuarios.readLine();
-			linea_contra = leer_contraseña.readLine();
+			linea_contra = leer_contrasenia.readLine();
 
 			
-		if (linea_usuario != usuario && linea_contra != contraseña)
+		if (linea_usuario != usuario && linea_contra != contrasenia)
 			{
 					System.out.println("usuario incorrecto");
 					accesoUsuario();
-					accesoContraseña();
+					accesoContrasenia();
 			}
 			
-			if (linea_usuario.equals(usuario) && linea_contra.equals(contraseña))
+			if (linea_usuario.equals(usuario) && linea_contra.equals(contrasenia))
 				{
 					System.out.println("Su inicio de sesión se ha realizado correctamente");
 				}
@@ -137,7 +137,7 @@ public class IniciarSesion {
 		{
 			try {
 				leer_usuarios.close();
-				leer_contraseña.close();
+				leer_contrasenia.close();
 
 
 			} catch (Exception e) {
