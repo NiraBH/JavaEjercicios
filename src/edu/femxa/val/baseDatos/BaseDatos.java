@@ -49,17 +49,22 @@ public class BaseDatos {
 			//Sea como sea, es, <<oye, si te piden una conexión, se la pides a esa clase!>>
 			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
   	        stmt = conn.createStatement();
-			rset = stmt.executeQuery("SELECT e.FIRST_NAME, e.EMPLOYEE_ID, e.SALARY, d.DEPARTMENT_NAME, e.DEPARTMENT_ID from EMPLOYEES E, DEPARTMENTS D where E.DEPARTMENT_ID = D.DEPARTMENT_ID ORDER BY E.SALARY DESC"); //seleccionar todo los atributos
-	
+			rset = stmt.executeQuery(Consultas.CONSULTA_EMPLEADOS_SALARIOS_ASC); //seleccionar todo los atributos
+			String nombre = null;
+			int salario = 0;
+			Integer  id = 0;
+			int dpto = 0;
+			String nombdpto = null;
+			
 			while (rset.next()) {
 //			        System.out.println (rset.getString(1));  
 			   		//System.out.println (rset.getString(2));
 					
-					String nombre= rset.getNString(1);
-					int salario = rset.getInt(3);
-					int id = rset.getInt("EMPLOYEE_ID");
-					int dpto = rset.getInt("DEPARTMENT_ID");
-					String nombdpto = rset.getString("DEPARTMENT_NAME");
+					nombre= rset.getNString(1);
+					salario = rset.getInt(3);
+					id = rset.getInt("EMPLOYEE_ID");
+					dpto = rset.getInt("DEPARTMENT_ID");
+					nombdpto = rset.getString("DEPARTMENT_NAME");
 					
 					Empleado empleado = new Empleado(id , nombre, salario, dpto, nombdpto);
 					
