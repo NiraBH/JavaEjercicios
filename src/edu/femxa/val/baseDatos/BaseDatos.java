@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.sun.swing.internal.plaf.basic.resources.basic_pt_BR;
-
 public class BaseDatos {
 	
 	

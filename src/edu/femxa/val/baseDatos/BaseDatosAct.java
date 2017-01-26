@@ -5,17 +5,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-
-import com.sun.swing.internal.plaf.basic.resources.basic_pt_BR;
 
 
 public class BaseDatosAct {
 	
 	
-	private static void consultaHistoricoAumentos (Connection conn)
+	private static void consultaHistoricoAumentos (Connection conn) throws Exception
 	{
 		Statement st = null;
 		ResultSet rs = null;
@@ -27,7 +26,7 @@ public class BaseDatosAct {
 			Integer empleado_id = 0;
 			Integer salario_antiguo = 0;
 			Integer salario_actual = 0;
-			Date fecha =null;
+			Date fecha = null;
 			
 			while (rs.next())
 			    {
@@ -35,7 +34,7 @@ public class BaseDatosAct {
 					salario_antiguo = rs.getInt("SALARIO_ANTERIOR");
 					salario_actual = rs.getInt("SALARIO_POSTERIOR");
 					fecha = rs.getDate("FECHA_AUMENTO");
-					System.out.println("Empleado ID = "+empleado_id + " || Salario anterior = " +salario_antiguo+ "|| Salario actual = " +salario_actual+ "a fecha de: " +fecha);
+					System.out.println("Empleado ID = "+empleado_id + " || Salario anterior = " +salario_antiguo+ "|| Salario actual = " +salario_actual+ " a fecha de: " +fecha);
 				 }
 			
 			
@@ -43,6 +42,8 @@ public class BaseDatosAct {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			throw e;
+			
 		}
 		finally 
 		{
@@ -63,7 +64,7 @@ public class BaseDatosAct {
 	
 	}
 	
-	private static void subeSueldo (Connection conn)
+	private static void subeSueldo (Connection conn) throws Exception
 	{
 		Statement st = null;
 		
@@ -75,10 +76,11 @@ public class BaseDatosAct {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			throw e;
 		}
 		finally 
 		{
-			liberarRecursos(st);
+		 	liberarRecursos(st);
 			
 		}
 	}
@@ -86,17 +88,32 @@ public class BaseDatosAct {
 	
 	public static void main(String[] args) throws SQLException {
 		Connection conn = null;
+		Savepoint punto_guardado = null;
 		try{
 			DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
 			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "password");
 		    conn.setAutoCommit(false);
+		    
+		    consultaHistoricoAumentos(conn);
+			punto_guardado = conn.setSavepoint();
+			
 			subeSueldo(conn);
 		    consultaHistoricoAumentos(conn);
+		    //conn.commit();
 		    
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error ejecutando bd");
-			conn.rollback();
+//			e.printStackTrace();
+//			System.out.println("Error ejecutando bd");
+			if (punto_guardado != null){
+				
+				conn.rollback(punto_guardado);
+				System.out.println("SE HA HECHO ROLLBACK HASTA UPDATE");
+			}
+			else 
+			{
+				conn.rollback();
+			}
+			
 			
 		} finally {
 			liberarRecursos(conn);
