@@ -10,24 +10,20 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String dpto = "60 ";
+		String dpto = "90";
 		List<EmpleadosDto> lista_empleados = null;
 		lista_empleados = new ArrayList<EmpleadosDto>();
 		EmpleadosDao empleado = new EmpleadosDao();
-		try{
-			lista_empleados = empleado.seleccionarEmpleados(dpto); 
+		try {
+			lista_empleados = empleado.seleccionarEmpleados(dpto);
 			empleado.mostrarLista(lista_empleados);
-			
+
 		}
-		
-			
-	
-			
-		    
-		 catch (Exception e) {
+
+		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error ejecutando bd");
-			
+
 		}
 
 	}
