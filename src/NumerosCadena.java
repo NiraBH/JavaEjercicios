@@ -2,7 +2,7 @@ public class NumerosCadena {
 
 		
 	
-	//HACED UN MÉTODO QUE DADA UNA CADENA, MUESTRE CADA UNA DE LAS LETRAS CON UN BUCLE FOR
+	//HACED UN MeTODO QUE DADA UNA CADENA, MUESTRE CADA UNA DE LAS LETRAS CON UN BUCLE FOR
 	
 	public static void mostrarPalabraLetraALetra (String palabra)
 	{

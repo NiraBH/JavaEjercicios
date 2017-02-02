@@ -15,7 +15,7 @@ public class BaseDatos {
 	{
 	for (Empleado emp : lemp)
 	{
-		System.out.println(" ·Nombre: " + emp.getNombre() + " ·Salario: " + emp.getSalario() + " ·ID: " + emp.getId() + " ·Departamento: " + emp.getDpto() + " ·Nombre de departamento: " + emp.getNombdpto());
+		System.out.println(" Nombre: " + emp.getNombre() + " Salario: " + emp.getSalario() + " ID: " + emp.getId() + " Departamento: " + emp.getDpto() + " Nombre de departamento: " + emp.getNombdpto());
 		
 	}
 	

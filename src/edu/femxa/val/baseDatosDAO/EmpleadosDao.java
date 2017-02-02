@@ -51,7 +51,7 @@ public class EmpleadosDao {
 
 	public void mostrarLista(List<EmpleadosDto> lista_empleados) {
 		for (EmpleadosDto emp : lista_empleados) {
-			System.out.println(" ·Nombre: " + emp.getNombre() + " ·Salario: " + emp.getSalario() + "·Employee ID: "
+			System.out.println(" Nombre: " + emp.getNombre() + " Salario: " + emp.getSalario() + "Employee ID: "
 					+ emp.getEmployee_id());
 
 		}

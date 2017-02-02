@@ -32,11 +32,11 @@ public class ListaPersonas {
 	
 	/**
 	 * 
-	 * Métdo que inserta un objeto Persona
+	 * Metdo que inserta un objeto Persona
 	 * en la lista de personas
 	 * 
 	 * @param persona La persona que se quiere introducir
-	 * @return true si la operación fue existosa, false, si no cabían más
+	 * @return true si la operacion fue existosa, false, si no cabian mas
 	 */
 	public boolean insertarPersona (Persona persona)
 	{
@@ -51,7 +51,7 @@ public class ListaPersonas {
 			} 
 			else 
 			{
-				System.out.println("La lista está llena");
+				System.out.println("La lista esta llena");
 				insertada = false;
 			}
 		
@@ -59,11 +59,11 @@ public class ListaPersonas {
 	}
 
 	/**
-	 *Método que permite buscar a una persona
+	 *Metodo que permite buscar a una persona
 	 *por su nombre en la lista
 	 * 
 	 * @param nombre El nombre de la persona a buscar
-	 * @return un -5 si la persona no está o el número de posición donde está
+	 * @return un -5 si la persona no esta o el numero de posicion donde esta
 	 */
 	public int buscarPersonaPos (String nombre)
 	{
@@ -93,8 +93,8 @@ public class ListaPersonas {
 			persona_actual = lista_personas[i];
 			persona_actual.mostrarPersona();
 			
-//			System.out.println(persona_actual.getEdad()); //método alternativo
-//			System.out.println(persona_actual.getNombre());// el otro es el preferido por favorecer la encapsulación y la reutilización
+//			System.out.println(persona_actual.getEdad()); //metodo alternativo
+//			System.out.println(persona_actual.getNombre());// el otro es el preferido por favorecer la encapsulacion y la reutilizaciï¿½n
 		}
 	}
 

@@ -22,7 +22,7 @@ public class SiPalindromo {
 			return bd;
 		}
 		/**
-		 * 
+		 * @param
 		 * Este programa tiene un método que sirve para averiguar si es una palabra es un palindromo.
 		 * 
 		 */

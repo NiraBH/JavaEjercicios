@@ -63,7 +63,7 @@ public class Cesar {
 				if (caracter_actual != ' ')
 				{
 					
-					caracter_n = (int) caracter_actual; //habría que hacer una conversion primero a numero int
+					caracter_n = (int) caracter_actual; //habria que hacer una conversion primero a numero int
 					caracter_n = (caracter_n + clave); //para luego hacer una suma de numeros y no sumar letras y numeros
 					caracter_cifrado =  (char) caracter_n;
 					palabra_cifrada = palabra_cifrada + caracter_cifrado;
