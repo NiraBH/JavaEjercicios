@@ -2,7 +2,7 @@ package edu.femxa.val.JSON;
 
 import java.util.Date;
 
-public class Recado {
+public class Recado implements Comparable<Recado> {
 	
 	private Date fecha_hora;
 	private String nombre_cliente;
@@ -12,7 +12,15 @@ public class Recado {
 	private String descripcion;
 	private Date fecha_hora_maxima;
 	
-	public Recado(Date fecha_hora, String nombre_cliente, String telefono, String direccion_recogida,
+	@Override
+	public int compareTo(Recado o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	
+	public Recado (Date fecha_hora, String nombre_cliente, String telefono, String direccion_recogida,
 			String direccion_entrega, String descripcion, Date fecha_hora_maxima) {
 		super();
 		this.fecha_hora = fecha_hora;
@@ -26,8 +34,12 @@ public class Recado {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return this.telefono;
+		
+		String str_recado = null;
+		
+		str_recado = this.getNombre_cliente()+ " " + this.getTelefono() + " " + this.getDescripcion(); 
+		
+		return str_recado;
 	}
 	
 	public Date getFecha_hora() {
@@ -72,6 +84,7 @@ public class Recado {
 	public void setFecha_hora_maxima(Date fecha_hora_maxima) {
 		this.fecha_hora_maxima = fecha_hora_maxima;
 	}
+
 	
 	
 	

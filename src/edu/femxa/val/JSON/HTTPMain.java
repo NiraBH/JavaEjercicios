@@ -29,10 +29,17 @@ public class HTTPMain {
 		     String joson = getJSON("http://elrecadero-ebtm.rhcloud.com/ObtenerListaRecados");
 		     Gson gson = new Gson();
 		     List<Recado> l = gson.fromJson(joson, new TypeToken<List<Recado>>(){}.getType());
-		     Recado r = l.get(1);
+		     //Recado r = l.get(1);
+		     
+		     for (Recado r : l)
+		     {
+		    	 
+		    	 String str = r.toString();
+		    	 
+		    	 System.out.println();
+		     }
 		     
 		     
-		     System.out.println(r.toString());
 	   }
 
 }
