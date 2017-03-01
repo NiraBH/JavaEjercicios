@@ -1,20 +1,18 @@
 package edu.femxa.val.ejernavi;
 
 public class Persona {
-	
-	
+
 	private int edad;
 	private String nombre;
 
-	
-	public void mostrarPersona ()
-	{
+	public void mostrarPersona() {
 		System.out.println("Edad = " + this.edad);
 		System.out.println("Nombre = " + this.nombre);
 	}
-	
-	public Persona (){}
-	
+
+	public Persona() {
+	}
+
 	public Persona(String nombre2, int edad2) {
 		// TODO Auto-generated constructor stub
 		this.edad = edad2;

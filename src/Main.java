@@ -9,19 +9,16 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Empieza el programa");
 
-		
-		//PEDIR DATOS PERSONA
-		
+		// PEDIR DATOS PERSONA
+
 		Persona persona = PedirDatos.pedirDatosPersona();
 
-		//CALCULAR IMC 
-		
+		// CALCULAR IMC
+
 		CalcularIMC.calcula(persona);
-		
-		//MOSTRAR PERSONA IMC
-		
-		
-		
+
+		// MOSTRAR PERSONA IMC
+
 		persona = new Persona();
 	}
 

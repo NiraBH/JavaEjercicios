@@ -19,9 +19,6 @@ public class IniciarSesion {
 			System.out.println(usuario + contrasenia_codificada);
 			comprobarAcceso(usuario, contrasenia_codificada);
 
-			
-			
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -29,39 +26,32 @@ public class IniciarSesion {
 
 	}
 
-	public static String accesoUsuario()
-	{
-		
+	public static String accesoUsuario() {
+
 		System.out.println("Introduce tu nombre de usuario: ");
 		String usuario = null;
-		Scanner scanner = new Scanner (System.in); 
+		Scanner scanner = new Scanner(System.in);
 		usuario = scanner.nextLine();
-
 
 		return usuario;
 
-
 	}
 
-	public static String accesoContrasenia()
-	{
-		
-		
+	public static String accesoContrasenia() {
+
 		System.out.println("Introduce tu contraseña: ");
 		String contrasenia = null;
-		Scanner scanner = new Scanner (System.in); 
+		Scanner scanner = new Scanner(System.in);
 		contrasenia = scanner.nextLine();
-		
-		
 
 		return contrasenia;
 
-
 	}
+
 	public static final int CLAVE = 5;
 	public static final char LETRA = '{';
-	
-	public static String codifica (String cadena)
+
+	public static String codifica(String cadena)
 
 	{
 		String palabra_cifrada = null;
@@ -71,22 +61,18 @@ public class IniciarSesion {
 		char caracter_cifrado = 0;
 		palabra_cifrada = new String();
 
-
-
-		for (int pos = 0; pos < longitud; pos++)
-		{
+		for (int pos = 0; pos < longitud; pos++) {
 			caracter_inicial = cadena.charAt(pos);
-			if (caracter_inicial != ' ')
-			{
-				n_caracter = (int)caracter_inicial;
+			if (caracter_inicial != ' ') {
+				n_caracter = (int) caracter_inicial;
 				n_caracter = n_caracter + CLAVE;
-				caracter_cifrado = (char)n_caracter;
+				caracter_cifrado = (char) n_caracter;
 				palabra_cifrada = palabra_cifrada + caracter_cifrado;
 
-			} else 
+			} else
 
-			{ 
-				//palabra_cifrada = palabra_cifrada + caracter_inicial;
+			{
+				// palabra_cifrada = palabra_cifrada + caracter_inicial;
 
 				palabra_cifrada = palabra_cifrada + LETRA;
 			}
@@ -94,51 +80,44 @@ public class IniciarSesion {
 
 		return palabra_cifrada;
 	}
-	
-	public static boolean comprobarAcceso (String usuario, String contrasenia) throws FileNotFoundException{
+
+	public static boolean comprobarAcceso(String usuario, String contrasenia) throws FileNotFoundException {
 
 		boolean inicio_correcto = false;
 
 		BufferedReader leer_usuarios = new BufferedReader(new FileReader("Usuarios.txt"));
 		BufferedReader leer_contrasenia = new BufferedReader(new FileReader("Contraseñas.txt"));
 
-		try 
+		try
 
 		{
-			String linea_usuario = null ;
-			String linea_contra = null ;
+			String linea_usuario = null;
+			String linea_contra = null;
 
 			linea_usuario = leer_usuarios.readLine();
 			linea_contra = leer_contrasenia.readLine();
 
-			
-		if (linea_usuario != usuario && linea_contra != contrasenia)
-			{
-					System.out.println("usuario incorrecto");
-					accesoUsuario();
-					accesoContrasenia();
+			if (linea_usuario != usuario && linea_contra != contrasenia) {
+				System.out.println("usuario incorrecto");
+				accesoUsuario();
+				accesoContrasenia();
 			}
-			
-			if (linea_usuario.equals(usuario) && linea_contra.equals(contrasenia))
-				{
-					System.out.println("Su inicio de sesión se ha realizado correctamente");
-				}
-		
-		
+
+			if (linea_usuario.equals(usuario) && linea_contra.equals(contrasenia)) {
+				System.out.println("Su inicio de sesión se ha realizado correctamente");
+			}
+
 		}
 
-		catch (Exception e)
-		{
+		catch (Exception e) {
 			System.out.println("Se ha generado un error!!");
 			e.printStackTrace();
-		}	
+		}
 
-		finally
-		{
+		finally {
 			try {
 				leer_usuarios.close();
 				leer_contrasenia.close();
-
 
 			} catch (Exception e) {
 				System.out.println("Ha ocurrido un error en los cierres");
@@ -147,12 +126,6 @@ public class IniciarSesion {
 
 		}
 
-
 		return inicio_correcto;
 	}
 }
-
-
-
-
-

@@ -1,5 +1,4 @@
 
-
 /**
  * @author Administrador
  * @version 1.0
@@ -13,14 +12,11 @@ public class Persona {
 	float peso;
 
 	/*
-	 * Metodo constructor 
-	 * Me permite crear objetos de la clase Persona
+	 * Metodo constructor Me permite crear objetos de la clase Persona
 	 */
 
 	public Persona() {
 
 	}
-
-	
 
 }
